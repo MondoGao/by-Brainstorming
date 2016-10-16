@@ -37,11 +37,13 @@ section {
 
 h3 {
   font-weight: normal;
-  font-size: 26px; }
+  font-size: 0.693rem;
+  /* 26/37.5 */ }
 
 p {
   margin-top: 0.27rem;
-  font-size: 14px; }
+  font-size: 0.373rem;
+  /* 14/37.5 */ }
 
 a {
   text-decoration: none; }
@@ -133,6 +135,7 @@ a {
   position: absolute;
   font-size: 1.173rem;
   /* 44/37.5 */
+  background-size: cover !important;
   overflow: hidden;
   transition: transform .8s; }
   .card-back .card::before, .card-back .card::after {
@@ -233,19 +236,21 @@ a {
       width: 2.453rem;
       /* 92/37.5 */ }
     .card-front .card header {
-      font-size: 38px;
+      font-size: 1.013rem;
+      /* 38/37.5 */
       line-height: .9; }
       .card-front .card header small {
         display: block;
         font-size: .4em; }
     .card-front .card p {
       margin-top: .5rem;
-      font-size: 20px;
+      font-size: 0.533rem;
+      /* 20/37.5 */
       line-height: 1.1; }
       .card-front .card p span {
         margin-left: 0.133rem;
         /* 5/37.5 */ }
-      .card-front .card p span:nth-child(1), .card-front .card p span:nth-child(4) {
+      .card-front .card p span:nth-child(1), .card-front .card p span:nth-child(5) {
         margin-left: 0; }
   .card-front .card-thing {
     box-shadow: 0 0.027rem 0.133rem 0rem #E5C04E, 0 0.053rem 0.053rem 0rem #E5C04E;
@@ -393,7 +398,8 @@ a {
     opacity: 0;
     pointer-events: none; }
   #dialog-layout header {
-    font-size: 18px;
+    font-size: 0.48rem;
+    /* 18/37.5 */
     line-height: 1.173rem;
     /* 44/37.5 */ }
   #dialog-layout input {

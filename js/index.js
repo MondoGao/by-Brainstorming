@@ -86,8 +86,11 @@ function fitScreen() {
     var screenHeight = document.body.offsetHeight;
     var screenWidth = document.body.offsetWidth;
     var screenRatio = screenWidth/screenHeight;
-    if (screenRatio < 1) {
+    if (screenRatio < 1 || screenWidth < 375) {
         document.querySelector('html').style.fontSize = screenWidth/10 +'px';
+    } else {
+        document.querySelector('html').style.fontSize = 37.5 + 'px';
+
     }
 }
 
@@ -175,7 +178,7 @@ function startBrainstorm(e) {
             for(var j = 0; j < finalCards[item][i].words.length; j++) {
                 words[j].innerHTML = finalCards[item][i].words[j];
             }
-            div.className += " card-" + item;
+            div.className = "card card-" + item;
             var clone = document.importNode(template.content, true);
             cardResult.appendChild(clone);
         }
