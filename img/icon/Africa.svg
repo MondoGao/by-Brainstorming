@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="197px" height="182px" viewBox="0 0 197 182" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 39.1 (31720) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 2</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard-4" transform="translate(-453.000000, -573.000000)" stroke="#CA7CAC" stroke-width="5">
+            <g id="Group-2" transform="translate(453.000000, 573.000000)">
+                <path d="M4.5,2.5 L191.5,2.5" id="Line" stroke-linecap="square"></path>
+                <path d="M194.5,2.5 L194.5,137.5" id="Line" stroke-linecap="square"></path>
+                <path d="M2.5,137.5 L193.5,137.5" id="Line" stroke-linecap="square"></path>
+                <path d="M2.5,2.5 L2.5,179.5" id="Line" stroke-linecap="square"></path>
+                <polyline id="Path-43" points="16.6265564 3.25041745 81.7360224 54.226471 194.814156 54.2741385"></polyline>
+                <polyline id="Path-44" points="45.9324869 2.6806628 91.0740397 37.4653119 193.520163 37.100596"></polyline>
+                <path d="M3.91603665,24.6428673 C3.91603665,24.6428673 64.1137562,66.7044594 64.1137534,69.615743 C64.1137506,72.5270267 2.10403494,114.025893 2.10403494,114.025893" id="Path-46"></path>
+                <polyline id="Path-47" points="16.890347 135.914853 82.3409346 86.0348065 192.679684 86.0348065"></polyline>
+                <polyline id="Path-48" points="47.6382856 135.583785 90.9331832 102.352837 193.716858 102.637348"></polyline>
+            </g>
+        </g>
+    </g>
+</svg>

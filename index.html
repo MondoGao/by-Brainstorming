@@ -2,8 +2,9 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>头脑风暴</title>
+        <link rel="stylesheet" href="css/index.css">
     </head>
     <body>
         <section>
@@ -11,17 +12,60 @@
                 <h3>选择元素</h3>
                 <p>单击卡片即抽卡，最多5张，可重复</p>
             </header>
-            <div id="card-container card-back">
+            <div class="card-container card-back">
                 <!-- 前向箭头 -->
-                <template>
-                    <div class="card">
+                <div class="card-wrap">
+                    <div class="card card-0 card-thing">
                         <header>
-
+                            物品
                         </header>
                         <!-- 背景圈圈 -->
-                        <i class="iconfont"></i>
+                        <figure>
+                            <img src="img/icon/thing.svg" alt="" />
+                            <div class="icon-shadow"></div>
+                        </figure>
                     </div>
-                </template>
+                    <div class="card card-1 card-people">
+                        <header>
+                            人物
+                        </header>
+                        <!-- 背景圈圈 -->
+                        <figure>
+                            <img src="img/icon/people.svg" alt="" />
+                            <div class="icon-shadow"></div>
+                        </figure>
+                    </div>
+                    <div class="card card-2 card-time">
+                        <header>
+                            时间
+                        </header>
+                        <!-- 背景圈圈 -->
+                        <figure>
+                            <img src="img/icon/time.svg" alt="" />
+                            <div class="icon-shadow"></div>
+                        </figure>
+                    </div>
+                    <div class="card card-3 card-place">
+                        <header>
+                            地点
+                        </header>
+                        <!-- 背景圈圈 -->
+                        <figure>
+                            <img src="img/icon/place.svg" alt="" />
+                            <div class="icon-shadow"></div>
+                        </figure>
+                    </div>
+                    <div class="card card-4 card-event">
+                        <header>
+                            事件
+                        </header>
+                        <!-- 背景圈圈 -->
+                        <figure>
+                            <img src="img/icon/event.svg" alt="" />
+                            <div class="icon-shadow"></div>
+                        </figure>
+                    </div>
+                </div>
                 <!-- 后向箭头 -->
             </div>
             <ul class="card-list">
@@ -32,33 +76,58 @@
                 <li></li>
             </ul>
             <a href="#" class="btn btn-large">开始脑暴</a>
-            <div id="dialog-layout">
+            <div id="dialog-layout" class="hide">
                 <header>
                     设定脑暴主题
                 </header>
-                <input type="text" name="subject" value="" />
-                <a href="#" class="btn btn-small">取消</a>
-                <a href="#" class="btn btn-small">确定</a>
+                <input type="text" name="subject" value="" placeholder="最多输入10个字，不填则不限主题" />
+                <a href="#" id="dialog-cancel" class="btn btn-small">取消</a>
+                <a href="#" id="dialog-submit" class="btn btn-small">确定</a>
             </div>
         </section>
         <section>
             <header>
                 <h3>查看卡片</h3>
-                <p>主题：</p>
+                <p>主题： <span id="subject">校园通</span></p>
             </header>
-            <div id="card-container card-front">
+            <div class="card-container card-front">
                 <!-- 前向箭头 -->
-                <div class="card">
-                    <header>
-
-                    </header>
-                    <!-- 背景圈圈 -->
-                    <i class="iconfont"></i>
-                </div>
+                <ul id="card-result">
+                    <li>
+                        <div class="card card-place">
+                            <img src="img/icon/Kitchen.svg" alt="" />
+                            <header>
+                                <small>Kitchen</small>
+                                厨房
+                            </header>
+                            <p><span>火</span><span>火</span><span>火</span><br /><span>火</span><span>火</span></p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="card card-place">
+                            <img src="img/icon/Kitchen.svg" alt="" />
+                            <header>
+                                <small>Kitchen</small>
+                                厨房
+                            </header>
+                            <p><span>火</span><span>火</span><span>火</span><br /><span>火</span><span>火</span></p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="card card-place">
+                            <img src="img/icon/Kitchen.svg" alt="" />
+                            <header>
+                                <small>Kitchen</small>
+                                厨房
+                            </header>
+                            <p><span>火</span><span>火</span><span>火</span><br /><span>火</span><span>火</span></p>
+                        </div>
+                    </li>
+                </ul>
                 <!-- 后向箭头 -->
             </div>
-            <a href="#" class="btn btn-large">与朋友一起讨论</a>
-            <a href="#" class="btn btn-large">再抽一次</a>
+            <a href="#" id="btn-discuss" class="btn btn-large">与朋友一起讨论</a>
+            <a href="#" id="btn-again" class="btn btn-large">再抽一次</a>
         </section>
     </body>
 </html>

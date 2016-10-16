@@ -1,0 +1,295 @@
+body, section, header, div, span, ul, li, p, img, figure, h3, a {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+html {
+  font-size: 37.5px;
+  height: 100%;
+  width: 100%; }
+
+body {
+  height: 100%;
+  background-color: #A4CCF0; }
+
+ul {
+  list-style: none;
+  font-size: 0; }
+  ul li {
+    display: inline-block;
+    font-size: 1rem; }
+
+section {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  font-size: 0;
+  padding-top: 1rem; }
+
+h3 {
+  font-weight: normal;
+  font-size: 26px; }
+
+p {
+  margin-top: 0.27rem;
+  font-size: 14px; }
+
+a {
+  text-decoration: none; }
+
+.btn {
+  display: block;
+  color: #fff; }
+  .btn.btn-large {
+    margin: 0 auto;
+    margin-top: 0.5rem;
+    width: 8.03rem;
+    height: 1.39rem;
+    line-height: 1.39rem;
+    font-size: 26px;
+    background: #5189BA;
+    box-shadow: 0.05rem 0.11rem 0 #3D6086;
+    border-radius: 0.45rem; }
+  .btn.btn-small {
+    display: inline-block;
+    width: 3.28rem;
+    height: 1.15rem;
+    line-height: 1.15rem;
+    font-size: 18px;
+    background: #84A3C2;
+    border-radius: 0.427rem;
+    /* 16/37.5 */ }
+
+#btn-discuss, #btn-again {
+  font-size: 18px; }
+
+.card-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: .5rem 0; }
+  .card-container::before, .card-container::after {
+    position: absolute;
+    content: "";
+    top: 50%;
+    margin-top: -0.533rem;
+    /* -20/37.5 */
+    width: 0;
+    /* 40/37.5 */
+    height: 0;
+    border: 0.533rem solid;
+    /* 20/37.5 */ }
+  .card-container::before {
+    left: -0.293rem;
+    /* -11/37.5 */
+    border-color: transparent #fff transparent transparent; }
+  .card-container::after {
+    right: -0.293rem;
+    /* -11/37.5 */
+    border-color: transparent transparent transparent #fff; }
+  .card-container.card-front::before {
+    left: 0;
+    /* -11/37.5 */ }
+  .card-container.card-front::after {
+    right: 0;
+    /* -11/37.5 */ }
+
+.card-wrap {
+  margin: 0 auto;
+  width: 5.92rem;
+  height: 7.73rem;
+  transform-style: preserve-3d;
+  perspective: 10rem; }
+
+.card {
+  background-color: #fff;
+  width: 5.92rem;
+  height: 7.73rem;
+  border-radius: 0.37rem; }
+
+.card-back .card {
+  position: absolute;
+  font-size: 44px;
+  overflow: hidden; }
+  .card-back .card::before, .card-back .card::after {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    transform: scaleY(1.1); }
+  .card-back .card::before {
+    left: 0.34rem;
+    bottom: -2.62rem;
+    padding: 1.28rem; }
+  .card-back .card::after {
+    left: 1.01rem;
+    bottom: -1.95rem;
+    padding: 1.28rem; }
+  .card-back .card header {
+    margin: 1rem auto 1.44rem;
+    /* 54/37.5 */
+    width: 1em;
+    line-height: 1.05; }
+  .card-back .card figure {
+    font-size: 0; }
+    .card-back .card figure::after {
+      content: "";
+      display: block;
+      margin: 0.08rem auto 0;
+      height: 0.187rem;
+      /* 7/37.5 */
+      width: 1.333rem;
+      /* 50/37.5 */
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 50%; }
+  .card-back .card img {
+    position: relative;
+    z-index: 1; }
+  .card-back .card.card-0 {
+    transform: translateX(-2.9rem) translateZ(-4.2rem); }
+  .card-back .card.card-1 {
+    transform: translateX(-1.4rem) translateZ(-2.1rem); }
+  .card-back .card.card-2 {
+    transform: translateX(0) translateZ(0); }
+  .card-back .card.card-3 {
+    transform: translateX(1.4rem) translateZ(-2.1rem); }
+  .card-back .card.card-4 {
+    transform: translateX(2.9rem) translateZ(-4.2rem); }
+.card-back .card-thing {
+  box-shadow: 0 0.027rem 0.133rem 0rem #E5C04E, 0 0.053rem 0.053rem 0rem #E5C04E;
+  /* 1/37.5, 5/37.5, 0/37.5, 2/37.5, 2/37.5, 0/37.5 */
+  background: #FAEAB6 url(../img/card/thing.jpg); }
+  .card-back .card-thing::before {
+    border: 1.34rem solid #F4D578; }
+  .card-back .card-thing::after {
+    border: 0.67rem solid #E5C04E; }
+.card-back .card-time {
+  box-shadow: 0 0.027rem 0.133rem 0rem #5581AE, 0 0.053rem 0.053rem 0rem #5581AE;
+  /* 1/37.5, 5/37.5, 0/37.5, 2/37.5, 2/37.5, 0/37.5 */
+  background: #D4E9FE url(../img/card/time.jpg); }
+  .card-back .card-time::before {
+    border: 1.34rem solid #719DCA; }
+  .card-back .card-time::after {
+    border: 0.67rem solid #5581AE; }
+.card-back .card-place {
+  box-shadow: 0 0.027rem 0.133rem 0rem #C97AAA, 0 0.053rem 0.053rem 0rem #C97AAA;
+  /* 1/37.5, 5/37.5, 0/37.5, 2/37.5, 2/37.5, 0/37.5 */
+  background: #F0C2DE url(../img/card/place.jpg); }
+  .card-back .card-place::before {
+    border: 1.34rem solid #D799BE; }
+  .card-back .card-place::after {
+    border: 0.67rem solid #C97AAA; }
+.card-back .card-people {
+  box-shadow: 0 0.027rem 0.133rem 0rem #9876B3, 0 0.053rem 0.053rem 0rem #9876B3;
+  /* 1/37.5, 5/37.5, 0/37.5, 2/37.5, 2/37.5, 0/37.5 */
+  background: #DECEEB url(../img/card/people.jpg); }
+  .card-back .card-people::before {
+    border: 1.34rem solid #BDA1D4; }
+  .card-back .card-people::after {
+    border: 0.67rem solid #9876B3; }
+.card-back .card-event {
+  box-shadow: 0 0.027rem 0.133rem 0rem #40C1AD, 0 0.053rem 0.053rem 0rem #40C1AD;
+  /* 1/37.5, 5/37.5, 0/37.5, 2/37.5, 2/37.5, 0/37.5 */
+  background: #C3EEE7 url(../img/card/event.jpg); }
+  .card-back .card-event::before {
+    border: 1.34rem solid #98E1D6; }
+  .card-back .card-event::after {
+    border: 0.67rem solid #40C1AD; }
+
+.card-front {
+  margin-bottom: 1rem; }
+  .card-front .card {
+    margin: 0 auto; }
+    .card-front .card img {
+      margin: 0.747rem 0 0.16rem;
+      /* 28/37.5 */
+      width: 2.453rem;
+      /* 92/37.5 */ }
+    .card-front .card header {
+      font-size: 38px;
+      line-height: .9; }
+      .card-front .card header small {
+        display: block;
+        font-size: .4em; }
+    .card-front .card p {
+      margin-top: .5rem;
+      font-size: 20px;
+      line-height: 1.1; }
+      .card-front .card p span {
+        margin-left: 0.133rem;
+        /* 5/37.5 */ }
+      .card-front .card p span:nth-child(1), .card-front .card p span:nth-child(4) {
+        margin-left: 0; }
+  .card-front .card-thing {
+    box-shadow: 0 0.027rem 0.133rem 0rem #E5C04E, 0 0.053rem 0.053rem 0rem #E5C04E;
+    /* 1/37.5, 5/37.5, 0/37.5, 2/37.5, 2/37.5, 0/37.5 */ }
+  .card-front .card-time {
+    box-shadow: 0 0.027rem 0.133rem 0rem #5581AE, 0 0.053rem 0.053rem 0rem #5581AE;
+    /* 1/37.5, 5/37.5, 0/37.5, 2/37.5, 2/37.5, 0/37.5 */ }
+  .card-front .card-place {
+    box-shadow: 0 0.027rem 0.133rem 0rem #C97AAA, 0 0.053rem 0.053rem 0rem #C97AAA;
+    /* 1/37.5, 5/37.5, 0/37.5, 2/37.5, 2/37.5, 0/37.5 */ }
+  .card-front .card-people {
+    box-shadow: 0 0.027rem 0.133rem 0rem #9876B3, 0 0.053rem 0.053rem 0rem #9876B3;
+    /* 1/37.5, 5/37.5, 0/37.5, 2/37.5, 2/37.5, 0/37.5 */ }
+  .card-front .card-event {
+    box-shadow: 0 0.027rem 0.133rem 0rem #40C1AD, 0 0.053rem 0.053rem 0rem #40C1AD;
+    /* 1/37.5, 5/37.5, 0/37.5, 2/37.5, 2/37.5, 0/37.5 */ }
+
+#card-result {
+  white-space: nowrap; }
+  #card-result li {
+    width: 100%; }
+
+.card-list {
+  margin-left: -0.225rem; }
+  .card-list li {
+    width: 1.73rem;
+    height: 2.4rem;
+    background-color: #fff;
+    border: 1px solid #8D99A7;
+    border-radius: 0.32rem; }
+    .card-list li {
+      margin-left: 0.225rem; }
+
+#dialog-layout {
+  position: absolute;
+  top: 3.84rem;
+  /* 144/37.5 */
+  left: 50%;
+  margin-left: -3.8rem;
+  /* -285/37.5 */
+  width: 7.6rem;
+  height: 4.8rem;
+  /* 180/37.5 */
+  background-color: #fff;
+  border-radius: 0.373rem;
+  /* 14/37.5 */ }
+  #dialog-layout.hide {
+    opacity: 0;
+    pointer-events: none; }
+  #dialog-layout header {
+    font-size: 18px;
+    line-height: 1.173rem;
+    /* 44/37.5 */ }
+  #dialog-layout input {
+    display: inline-block;
+    margin: 0.16rem 0 0.8rem;
+    /* 6/37.5, 30/37.5 */
+    width: 6.507rem;
+    /* 244/37.5 */
+    height: 0.88rem;
+    /* 33/37.5 */
+    text-align: center;
+    border: 0.027rem solid #919191;
+    /* 1/37.5 */
+    border-radius: 1rem;
+    outline: none; }
+  #dialog-layout #dialog-submit {
+    margin-left: 0.24rem;
+    /* 9/37.5 */ }
+
+/*# sourceMappingURL=index.css.map */

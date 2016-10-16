@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="83px" height="81px" viewBox="0 0 83 81" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 39.1 (31720) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 6</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0.303041692" y="0.308613985" width="82.2669065" height="68.4820636" rx="12"></rect>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="82.2669065" height="68.4820636" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <rect id="path-3" x="8.55670103" y="8.86363636" width="65.5781694" height="50.5467782" rx="7"></rect>
+        <mask id="mask-4" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="65.5781694" height="50.5467782" fill="white">
+            <use xlink:href="#path-3"></use>
+        </mask>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-636.000000, -202.000000)">
+            <g id="Group-7" transform="translate(566.000000, 19.000000)">
+                <g id="Group-6" transform="translate(70.000000, 183.000000)">
+                    <path d="M57.1786457,60 C57.1786457,60 58.1430452,66.6454188 59.225457,70.0508289 C60.1816422,73.0591134 62.1864074,78.3210587 62.1864074,78.3210587 L21,78.3210588 C21,78.3210588 22.8061578,71.8672106 23.5396844,68.7005165 C24.2207754,65.760191 25.2438528,60 25.2438528,60 L57.1786457,60 Z" id="Path-10" stroke="#424242" stroke-width="5" fill="#FFFFFF"></path>
+                    <g id="Group-16">
+                        <use id="Rectangle-40" stroke="#424242" mask="url(#mask-2)" stroke-width="8" fill="#FFFFFF" xlink:href="#path-1"></use>
+                        <use id="Rectangle-41" stroke="#424242" mask="url(#mask-4)" stroke-width="8" fill="#FFFFFF" xlink:href="#path-3"></use>
+                        <rect id="Rectangle-43" fill="#FBFBFB" x="19.6804124" y="21.2727273" width="43.865285" height="26.5909091"></rect>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

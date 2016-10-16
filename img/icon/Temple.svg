@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="59px" height="71px" viewBox="0 0 59 71" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 39.1 (31720) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 8</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="12.6351351" y="20.7931034" width="31.2162162" height="6.16091954"></rect>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="31.2162162" height="6.16091954" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <rect id="path-3" x="7.43243243" y="36.1954023" width="40.1351351" height="6.16091954"></rect>
+        <mask id="mask-4" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="40.1351351" height="6.16091954" fill="white">
+            <use xlink:href="#path-3"></use>
+        </mask>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard-2" transform="translate(-1483.000000, -786.000000)" stroke="#CA7CAC">
+            <g id="Group" transform="translate(1401.000000, 727.000000)">
+                <g id="Group-8" transform="translate(84.000000, 61.000000)">
+                    <path d="M27.1322741,0.394963638 C27.5406045,0.0275994684 28.2025833,0.0275495605 28.6109691,0.394963638 L49.8014868,19.4595195 C50.6201368,20.1960376 50.3902174,20.7931034 49.2867801,20.7931034 L6.45646314,20.7931034 C5.35354846,20.7931034 5.12242704,20.1966488 5.94175643,19.4595195 L27.1322741,0.394963638 Z" id="Triangle" stroke-width="4" fill="#FFFFFF"></path>
+                    <use id="Rectangle-5" mask="url(#mask-2)" stroke-width="4" fill="#FFFFFF" xlink:href="#path-1"></use>
+                    <polyline id="Path-5" stroke-width="4" fill="#FFFFFF" points="6.10382253 56.2183908 5.94594595 66.2225168 49.6319371 66.2225168 49.6319371 56.2183908"></polyline>
+                    <path d="M34.1891892,56.2183908 L34.1891892,66.9553292" id="Path-10" stroke-width="2"></path>
+                    <path d="M19.4165292,54.9096912 L19.4165292,65.6466296" id="Path-10" stroke-width="2"></path>
+                    <path d="M9.24996527,42.3563218 L0.948239281,54.2111474 C0.634344387,54.6593878 0.821463402,55.0227585 1.37888547,55.0227585 L53.2373201,55.0227585 C54.3425252,55.0227585 54.7613164,54.2683477 54.1746255,53.3407535 L47.2271206,42.3563218 L9.24996527,42.3563218 Z" id="Path-18" stroke-width="4" fill="#FFFFFF"></path>
+                    <path d="M9.24996527,26.954023 L1.0907644,35.1255978 C0.698155059,35.5188025 0.821463402,35.837558 1.37888547,35.837558 L53.2373201,35.837558 C54.3425252,35.837558 54.6363176,35.169849 53.8975511,34.350654 L47.2271206,26.954023 L9.24996527,26.954023 Z" id="Path-18" stroke-width="4" fill="#FFFFFF"></path>
+                    <use id="Rectangle-6" mask="url(#mask-4)" stroke-width="4" fill="#FFFFFF" xlink:href="#path-3"></use>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

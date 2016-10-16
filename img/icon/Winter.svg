@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="54px" height="85px" viewBox="0 0 54 85" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 39.1 (31720) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 4</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="16.0799477" y="7.12509408" width="19.3544011" height="5.63046147" rx="2.81523074"></rect>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="19.3544011" height="5.63046147" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard-2" transform="translate(-928.000000, -94.000000)" stroke="#5382AF">
+            <g id="Group" transform="translate(843.568813, 41.000000)">
+                <g id="Group-4" transform="translate(85.000000, 54.000000)">
+                    <ellipse id="Oval-6" stroke-width="3" fill="#FFFFFF" cx="28.5775862" cy="60.1333333" rx="22.4224138" ry="21.8666667"></ellipse>
+                    <ellipse id="Oval-6" stroke-width="3" fill="#FFFFFF" cx="26.8189655" cy="26.8777778" rx="15.387931" ry="15.9444444"></ellipse>
+                    <ellipse id="Oval-7" fill="#424242" cx="31.6551724" cy="20.9555556" rx="1.75862069" ry="1.82222222"></ellipse>
+                    <ellipse id="Oval-7" fill="#424242" cx="20.2241379" cy="20.9555556" rx="1.75862069" ry="1.82222222"></ellipse>
+                    <use id="Rectangle-2" mask="url(#mask-2)" stroke-width="4" fill="#FFFFFF" xlink:href="#path-1"></use>
+                    <polygon id="Path-3" stroke-width="2" fill="#FFFFFF" points="14.9482759 0 18.8163212 7.58926053 33.5757448 7.58926028 36.8222344 0"></polygon>
+                    <path d="M22.6269498,27.3334654 L0,33.1489294 L25.6024304,31.5071792 C25.6024304,31.5071792 27.0764413,29.9201481 26.239664,28.6067941 C25.4028867,27.29344 22.6269498,27.3334654 22.6269498,27.3334654 Z" id="Path-2" stroke-width="2" fill="#FFFFFF"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="114px" height="110px" viewBox="0 0 114 110" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 39.1 (31720) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 9</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-85.000000, -492.000000)">
+            <g id="Group-8" transform="translate(32.000000, 339.000000)">
+                <g id="Group-3">
+                    <g id="Group-9" transform="translate(56.000000, 155.000000)">
+                        <g id="Group-17" transform="translate(23.000000, 29.000000)">
+                            <ellipse id="Oval-6" stroke="#424242" stroke-width="5" fill="#FFFFFF" cx="32.6836585" cy="31.7947109" rx="32.6836585" ry="31.7947109"></ellipse>
+                            <polyline id="Triangle" stroke="#424242" stroke-width="5" fill="#FFFFFF" points="32.7319476 77.7407449 43.4638951 56.2325581 22 56.2325581 32.7319476 77.7407449"></polyline>
+                            <ellipse id="Oval-7" fill="#FFFFFF" cx="31.9029741" cy="38.7970685" rx="23.9029741" ry="23.3784639"></ellipse>
+                            <text id="！" stroke="#424242" stroke-width="2" font-family="STHeitiSC-Medium, Heiti SC" font-size="48" font-weight="bold" fill="#424242">
+                                <tspan x="20.7572114" y="52.7906977">！</tspan>
+                            </text>
+                        </g>
+                        <g id="Group-18" stroke="#424242" stroke-width="5" stroke-linecap="square">
+                            <path d="M62.5273439,6.40076223 L50.237362,6.40076223" id="Line" transform="translate(56.382353, 6.688898) rotate(90.000000) translate(-56.382353, -6.688898) "></path>
+                            <path d="M91.2740371,19.5938313 L91.2740371,33.0119932" id="Line" transform="translate(91.274037, 26.302912) rotate(45.000000) translate(-91.274037, -26.302912) "></path>
+                            <path d="M107.643289,67.3095696 L95.3533072,67.3095696" id="Line"></path>
+                            <path d="M12.7137743,20.1146556 L21.4041038,29.6027288" id="Line"></path>
+                            <path d="M12.2899818,67.3095696 L0,67.3095696" id="Line"></path>
+                            <path d="M33.9033981,11.7861414 L36.3872318,18.1748395" id="Line"></path>
+                            <path d="M76.2826458,11.7861414 L78.7664795,18.1748395" id="Line" transform="translate(77.524563, 14.980490) scale(-1, 1) translate(-77.524563, -14.980490) "></path>
+                            <path d="M102.55935,44.6375031 L96.6246847,47.1247302" id="Line"></path>
+                            <path d="M12.715345,43.2494174 L6.78067963,45.7366445" id="Line" transform="translate(9.748012, 44.493031) scale(-1, 1) translate(-9.748012, -44.493031) "></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
