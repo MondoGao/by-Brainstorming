@@ -1,0 +1,273 @@
+window.onload = function() {
+    bindBackControllerArea();
+    bindBackCards();
+    bingBackDialog();
+    bindFrontControllerArea();
+    document.getElementById('btn-again').addEventListener("click", toggleSection);
+    fitScreen();
+    window.onresize = fitScreen;
+};
+
+var cardData = {
+    time: [
+        {
+            name: '春',
+            eng: 'Spring',
+            words: ['鲜花','发芽','播种','成长','希望','新的开始']
+        }, {
+            name: '夏',
+            eng: 'Summer',
+            words: ['烈日', '酷热', '暑假', '西瓜', '空调', '汗水']
+        }, {
+            name: '秋',
+            eng: 'Autumn',
+            words: ['枫叶', '凉爽', '中秋节', '成熟', '金色', '富有']
+        }
+    ], thing: [
+        {
+            name: '仙人掌',
+            eng: 'Cactus',
+            words: ['生命力强', '沙漠', '玫瑰', '刺', '牛仔']
+        }, {
+            name: '雾霾',
+            eng: 'Haze',
+            words: ['模糊', '无所不在', '香水', '口罩', '新闻']
+        }, {
+            name: '可乐',
+            eng: 'Cola',
+            words: ['欢乐', '家庭', '喷射', '爆炸']
+        }
+    ], place: [
+        {
+            name: '机场',
+            eng: 'AirPort',
+            words: ['旅游', '等候', '行李', '离别', '咖啡馆']
+        }, {
+            name: '寺庙',
+            eng: 'Temple',
+            words: ['信仰', '虔诚', '宗教', '蜡烛', '闹鬼']
+        }, {
+            name: '健身房',
+            eng: 'Gymnasium',
+            words: ['决斗', '赞扬', '死亡', '汗水', '好身材']
+        }
+    ], people: [
+        {
+            name: '学生',
+            eng: 'Student',
+            words: ['假期', '情窦初开', '叛逆', '压力']
+        }, {
+            name: '亲人',
+            eng: 'Relatives',
+            words: ['无私', '支柱', '回馈', '血液', '团聚']
+        }, {
+            name: '外星人',
+            eng: 'Alien',
+            words: ['火星', '飞碟', '智能', '掠夺', '诡异']
+        }
+    ], event: [
+        {
+            name: '弹',
+            eng: 'Bounce',
+            words: ['手指', '钢琴', '震动', '橡胶', '高', '灵巧']
+        }, {
+            name: '发怒',
+            eng: 'Anger',
+            words: ['失控', '破碎', '火', '力量']
+        }, {
+            name: '翻',
+            eng: 'Turn',
+            words: ['隐藏', '真相', '不同']
+        }
+    ]
+};
+
+function fitScreen() {
+    var screenHeight = document.body.offsetHeight;
+    var screenWidth = document.body.offsetWidth;
+    var screenRatio = screenWidth/screenHeight;
+    if (screenRatio < 1) {
+        document.querySelector('html').style.fontSize = screenWidth/10 +'px';
+    }
+}
+
+function bindFrontControllerArea() {
+    var touchstartX;
+    document.querySelector('.card-front .next').addEventListener("click", changeCardFront);
+    document.querySelector('.card-front .previous').addEventListener("click", changeCardFront);
+    document.querySelector('.card-front').addEventListener("touchstart", function(e) {
+        touchstartX = e.touches[0].clientX;
+    });
+    document.querySelector('.card-front').addEventListener("touchend", function(e) {
+        var changedX = e.changedTouches[0].clientX - touchstartX;
+        if(Math.abs(changedX) > 50) {
+            if(changedX > 0)
+                changeCardFront.call(document.querySelector('.card-front .previous'));
+            else
+                changeCardFront.call(document.querySelector('.card-front .next'));
+        }
+    });
+}
+function changeCardFront() {
+    // debugger
+    var direct = this.className == 'controller-area next';
+    var cardResult = document.getElementById('card-result');
+    var deviceWidth = document.body.offsetWidth;
+    if (direct) {
+        cardResult.dataset.card = Number(cardResult.dataset.card) + 1 >= cardResult.querySelectorAll('li').length ? 0 : (Number(cardResult.dataset.card) + 1);
+        cardResult.style.transform = "translateX(-"+ cardResult.dataset.card +"00%)";
+    } else {
+        cardResult.dataset.card = Number(cardResult.dataset.card) - 1 < 0 ? cardResult.querySelectorAll('li').length - 1 : (Number(cardResult.dataset.card) - 1);
+        cardResult.style.transform = "translateX(-"+ cardResult.dataset.card +"00%)";
+    }
+    // console.log(direct);
+}
+
+function bingBackDialog() {
+    document.getElementById('btn-start').addEventListener('click', toggleDialog);
+    document.getElementById('dialog-cancel').addEventListener('click', toggleDialog);
+    document.getElementById('dialog-submit').addEventListener('click', startBrainstorm);
+}
+
+function startBrainstorm(e) {
+    if(e) {
+        e.preventDefault();
+    }
+    var lis = document.querySelector('.card-list').querySelectorAll('.card');
+    var type = [];
+    var typeNumber = {time:0,place:0,thing:0,people:0,event:0};
+    var finalCards = {time:[],place:[],thing:[],people:[],event:[]};
+    var finalCardsState = {time:[],place:[],thing:[],people:[],event:[]};
+    document.getElementById('subject').innerText = document.querySelector('input').value || "无主题";
+    var index;
+    for(var i = 0; i < lis.length; i++) {
+        var name = lis[i].className.substring(10);
+        type.push(name);
+        typeNumber[name]++;
+        if(typeNumber[name] > cardData[name].length) {
+            alert("没那么多同类别的词哦～请重试！")
+            toggleDialog();
+            return;
+        }
+    }
+    for(var i = 0; i < type.length; i++) {
+        do {
+             index = Math.floor(Math.random()*(cardData[type[i]].length));
+        } while(finalCardsState[type[i]][index]);
+        finalCardsState[type[i]][index] = true;
+        var temp = finalCards[type[i]];
+        temp[temp.length] = cardData[type[i]][index];
+    }
+    console.log(finalCards);
+    var cardResult = document.getElementById('card-result');
+    var template = document.getElementById('card');
+    deleteCardResult();
+    var div = template.content.querySelector('div');
+    var img = div.querySelector('img'),
+        eng = div.querySelector('small'),
+        name = div.querySelector('header span'),
+        words = div.querySelectorAll('p span');
+    for(var item in finalCards) {
+        for(var i = 0; i < finalCards[item].length; i++) {
+            img.src = "img\/icon\/" + finalCards[item][i].eng + ".svg";
+            eng.innerHTML = finalCards[item][i].eng;
+            name.innerHTML = finalCards[item][i].name;
+            for(var j = 0; j < finalCards[item][i].words.length; j++) {
+                words[j].innerHTML = finalCards[item][i].words[j];
+            }
+            div.className += " card-" + item;
+            var clone = document.importNode(template.content, true);
+            cardResult.appendChild(clone);
+        }
+    }
+    toggleDialog();
+    toggleSection();
+}
+function deleteCardResult() {
+    var cardResult = document.getElementById('card-result');
+    var lis = cardResult.querySelectorAll('li');
+    for(var i = 0; i < lis.length; i++) {
+        cardResult.removeChild(lis[i]);
+    }
+}
+
+function toggleDialog(e) {
+    if(e) {
+        e.preventDefault();
+    }
+    if (document.getElementById('dialog-layout').className !== "") {
+        document.getElementById('dialog-layout').className = "";
+        document.getElementById('black-layout').className = "";
+    } else {
+        document.getElementById('dialog-layout').className = "hide";
+        document.getElementById('black-layout').className = "hide";
+    }
+}
+function toggleSection(e) {
+    if(e) {
+        e.preventDefault();
+    }
+    if (document.body.dataset.index === "0") {
+        document.body.dataset.index = 1;
+        document.body.style.transform = "translateX(-100%)";
+    } else {
+        document.body.dataset.index = 0;
+        document.body.style.transform = "translateX(0)";
+    }
+}
+
+function bindBackCards() {
+    var list = document.querySelector('.card-list');
+    var cards = document.querySelectorAll('.card-back .card');
+    for (var i = 0; i < cards.length; i++) {
+        cards[i].addEventListener("click", addToCardList);
+    }
+    function addToCardList() {
+        var clone = this.cloneNode(true);
+        clone.addEventListener("click", deleteCardfromList);
+        var li = list.querySelector('.empty');
+        if(li) {
+            li.appendChild(clone);
+            li.className = "";
+        }
+    }
+    function deleteCardfromList() {
+        this.parentNode.className = "empty";
+        this.parentNode.removeChild(this);
+    }
+}
+
+
+
+
+function bindBackControllerArea() {
+    var touchstartX;
+    document.querySelector('.card-back .next').addEventListener("click", changeCardBack);
+    document.querySelector('.card-back .previous').addEventListener("click", changeCardBack);
+    document.querySelector('.card-back').addEventListener("touchstart", function(e) {
+        touchstartX = e.touches[0].clientX;
+    });
+    document.querySelector('.card-back').addEventListener("touchend", function(e) {
+        var changedX = e.changedTouches[0].clientX - touchstartX;
+        if(Math.abs(changedX) > 50) {
+            if(changedX > 0)
+                changeCardBack.call(document.querySelector('.card-back .next'));
+            else
+                changeCardBack.call(document.querySelector('.card-back .previous'));
+        }
+    });
+}
+function changeCardBack() {
+    var direct = this.className == 'controller-area next';
+    var cards = document.querySelectorAll('.card-back .card');
+    if (direct) {
+        for (var i = 0; i < cards.length; i++) {
+            cards[i].dataset.index = Number(cards[i].dataset.index) + 1 > 4 ? 0 : (Number(cards[i].dataset.index) + 1);
+        }
+    } else {
+        for (var i = 0; i < cards.length; i++) {
+            cards[i].dataset.index = Number(cards[i].dataset.index) - 1 < 0 ? 4 : (Number(cards[i].dataset.index) - 1);
+        }
+    }
+    // console.log(direct);
+}

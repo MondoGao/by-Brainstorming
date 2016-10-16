@@ -2,11 +2,11 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
         <title>头脑风暴</title>
         <link rel="stylesheet" href="css/index.css">
     </head>
-    <body>
+    <body data-index="0">
         <section>
             <header>
                 <h3>选择元素</h3>
@@ -15,7 +15,7 @@
             <div class="card-container card-back">
                 <!-- 前向箭头 -->
                 <div class="card-wrap">
-                    <div class="card card-0 card-thing">
+                    <div class="card card-thing" data-index="0">
                         <header>
                             物品
                         </header>
@@ -25,7 +25,7 @@
                             <div class="icon-shadow"></div>
                         </figure>
                     </div>
-                    <div class="card card-1 card-people">
+                    <div class="card card-people" data-index="1">
                         <header>
                             人物
                         </header>
@@ -35,7 +35,7 @@
                             <div class="icon-shadow"></div>
                         </figure>
                     </div>
-                    <div class="card card-2 card-time">
+                    <div class="card card-time" data-index="2">
                         <header>
                             时间
                         </header>
@@ -45,7 +45,7 @@
                             <div class="icon-shadow"></div>
                         </figure>
                     </div>
-                    <div class="card card-3 card-place">
+                    <div class="card card-place" data-index="3">
                         <header>
                             地点
                         </header>
@@ -55,7 +55,7 @@
                             <div class="icon-shadow"></div>
                         </figure>
                     </div>
-                    <div class="card card-4 card-event">
+                    <div class="card card-event" data-index="4">
                         <header>
                             事件
                         </header>
@@ -67,15 +67,17 @@
                     </div>
                 </div>
                 <!-- 后向箭头 -->
+                <div class="controller-area previous"></div>
+                <div class="controller-area next"></div>
             </div>
             <ul class="card-list">
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
+                <li class="empty"></li>
+                <li class="empty"></li>
+                <li class="empty"></li>
+                <li class="empty"></li>
+                <li class="empty"></li>
             </ul>
-            <a href="#" class="btn btn-large">开始脑暴</a>
+            <a href="#" id="btn-start" class="btn btn-large">开始脑暴</a>
             <div id="dialog-layout" class="hide">
                 <header>
                     设定脑暴主题
@@ -88,46 +90,33 @@
         <section>
             <header>
                 <h3>查看卡片</h3>
-                <p>主题： <span id="subject">校园通</span></p>
+                <p>主题： <span id="subject"></span></p>
             </header>
             <div class="card-container card-front">
                 <!-- 前向箭头 -->
-                <ul id="card-result">
-                    <li>
-                        <div class="card card-place">
-                            <img src="img/icon/Kitchen.svg" alt="" />
-                            <header>
-                                <small>Kitchen</small>
-                                厨房
-                            </header>
-                            <p><span>火</span><span>火</span><span>火</span><br /><span>火</span><span>火</span></p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="card card-place">
-                            <img src="img/icon/Kitchen.svg" alt="" />
-                            <header>
-                                <small>Kitchen</small>
-                                厨房
-                            </header>
-                            <p><span>火</span><span>火</span><span>火</span><br /><span>火</span><span>火</span></p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="card card-place">
-                            <img src="img/icon/Kitchen.svg" alt="" />
-                            <header>
-                                <small>Kitchen</small>
-                                厨房
-                            </header>
-                            <p><span>火</span><span>火</span><span>火</span><br /><span>火</span><span>火</span></p>
-                        </div>
-                    </li>
+                <ul id="card-result" data-card="0">
+                    <template id="card">
+                        <li>
+                            <div class="card">
+                                <img src="#" alt="" />
+                                <header>
+                                    <small></small>
+                                    <span></span>
+                                </header>
+                                <p><span></span><span></span><span></span><br /><span></span><span></span><span></span></p>
+                            </div>
+                        </li>
+                    </template>
                 </ul>
                 <!-- 后向箭头 -->
+                <div class="controller-area previous"></div>
+                <div class="controller-area next"></div>
             </div>
             <a href="#" id="btn-discuss" class="btn btn-large">与朋友一起讨论</a>
             <a href="#" id="btn-again" class="btn btn-large">再抽一次</a>
         </section>
+        <div id="black-layout" class="hide">
+        </div>
+        <script src="js/index.js" charset="utf-8"></script>
     </body>
 </html>
