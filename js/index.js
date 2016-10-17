@@ -212,8 +212,8 @@ function startBrainstorm(e) {
             img.src = "img\/icon\/" + finalCards[item][i].eng + ".svg";
             eng.innerHTML = finalCards[item][i].eng;
             name.innerHTML = finalCards[item][i].name;
-            for(var j = 0; j < finalCards[item][i].words.length; j++) {
-                words[j].innerHTML = finalCards[item][i].words[j];
+            for(var j = 0; j < 6; j++) {
+                words[j].innerHTML = finalCards[item][i].words[j] || "";
             }
             div.className = "card card-" + item;
             div.dataset.index = order[k];
@@ -295,10 +295,10 @@ function bindBackCards() {
 function bindControllerArea(dir) {
     var touchstartX;
     document.querySelector('.card-' + dir + ' .next').addEventListener("click", function() {
-        changeCard.call(this, dir);
+        changeCard.call(document.querySelector('.card-' + dir + ' .previous'), dir);
     });
     document.querySelector('.card-' + dir + ' .previous').addEventListener("click", function() {
-        changeCard.call(this, dir);
+        changeCard.call(document.querySelector('.card-' + dir + ' .next'), dir);
     });
     document.querySelector('.card-' + dir).addEventListener("touchstart", function(e) {
         touchstartX = e.touches[0].clientX;
@@ -319,10 +319,26 @@ function changeCard(dir) {
     var flag = Math.floor((5 - cards.length)/2);
     if (direct) {
         for (var i = 0; i < cards.length; i++) {
+            var outFlag = Number(cards[i].dataset.index) + 1 > (4 - flag);
+            if (cards.length%2 === 0 && outFlag) {
+                setTimeout((function(i) {
+                    return function() {
+                        cards[i].dataset.index = Number(cards[i].dataset.index) + 1;
+                    }
+                })(i),300);
+            }
             cards[i].dataset.index = Number(cards[i].dataset.index) + 1 > (4 - flag) ? flag : (Number(cards[i].dataset.index) + 1);
         }
     } else {
         for (var i = 0; i < cards.length; i++) {
+            var outFlag = Number(cards[i].dataset.index) - 1 < flag;
+            if (cards.length%2 === 0 && outFlag) {
+                setTimeout((function(i) {
+                    return function() {
+                        cards[i].dataset.index = Number(cards[i].dataset.index) - 1;
+                    }
+                })(i),300);
+            }
             cards[i].dataset.index = Number(cards[i].dataset.index) - 1 < flag ? (4 - flag) : (Number(cards[i].dataset.index) - 1);
         }
     }
