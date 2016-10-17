@@ -7,6 +7,7 @@ window.onload = function() {
     document.getElementById('btn-again').addEventListener("click", function(e) {
         e.preventDefault();
         resetBackCards();
+        document.getElementById('card-result').style.transform = "";
         toggleSection(e);
         // deleteCardResult();
     });
