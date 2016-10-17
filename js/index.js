@@ -15,6 +15,9 @@ window.onload = function() {
     document.getElementById('btn-discuss').addEventListener("click", function(e) {
         toggleLayout(e, document.getElementById('share-layout'));
     });
+    document.getElementById('share-layout').addEventListener('click', function(e) {
+        toggleLayout(e, document.getElementById('share-layout'));
+    });
     document.getElementById('black-layout').addEventListener('click', function() {
         document.getElementById('share-layout').className =
         document.getElementById('dialog-layout').className =
@@ -110,7 +113,7 @@ function fitScreen() {
     var screenHeight = document.body.offsetHeight;
     var screenWidth = document.body.offsetWidth;
     var screenRatio = screenWidth/screenHeight;
-    var paddingRatio = 320/550;
+    var paddingRatio = 320/540;
     if (screenRatio < 1 || screenWidth < 375) {
         document.querySelector('html').style.fontSize = screenWidth/10 +'px';
     } else {
@@ -252,12 +255,16 @@ function toggleSection(e) {
     if(e) {
         e.preventDefault();
     }
+    var sec = document.querySelectorAll('section');
+
     if (document.body.dataset.index === "0") {
         document.body.dataset.index = 1;
-        document.body.style.transform = "translateX(-100%)";
+        sec[0].style.transform = "translateX(-100%)";
+        sec[1].style.transform = "translateX(-102%)";
     } else {
         document.body.dataset.index = 0;
-        document.body.style.transform = "translateX(0)";
+        sec[0].style.transform = "translateX(0)";
+        sec[1].style.transform = "translateX(0)";
     }
 }
 
