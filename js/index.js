@@ -25,6 +25,13 @@ window.onload = function() {
     });
 };
 
+function preventDefault(ev) {
+    ev.preventDefault()
+}
+function stopPropagation(ev) {
+    ev.stopPropagation()
+}
+
 var cardData = {
     time: [
         {
@@ -113,13 +120,27 @@ function fitScreen() {
     var screenHeight = document.body.offsetHeight;
     var screenWidth = document.body.offsetWidth;
     var screenRatio = screenWidth/screenHeight;
-    var paddingRatio = 320/530;
+    var paddingRatio = 375/600;
     if (screenRatio < 1 || screenWidth < 375) {
         document.querySelector('html').style.fontSize = screenWidth/10 +'px';
     } else {
         document.querySelector('html').style.fontSize = 37.5 + 'px';
-
     }
+    // debugger
+    document.body.addEventListener('touchmove', preventDefault);
+    var secHeight1 = document.querySelectorAll("section")[0];
+    var secHeight2 = document.querySelectorAll("section")[1];
+    changeSecScroll(secHeight1);
+    changeSecScroll(secHeight2);
+
+    function changeSecScroll(sec) {
+        if(sec.scrollHeight > screenHeight) {
+            sec.addEventListener('touchmove', stopPropagation);
+        } else {
+            sec.removeEventListener('touchmove', stopPropagation);
+        }
+    }
+
     if(screenRatio > paddingRatio) {
         document.querySelectorAll('section')[0].style.paddingBottom =
         document.querySelectorAll('section')[1].style.paddingBottom = "0.2rem";
@@ -215,6 +236,7 @@ function startBrainstorm(e) {
         eng = div.querySelector('small'),
         name = div.querySelector('header span'),
         words = div.querySelectorAll('p span');
+    // var index2 = 0;
     for(var item in finalCards) {
         for(var i = 0; i < finalCards[item].length; i++) {
             img.src = "img\/icon\/" + finalCards[item][i].eng + ".svg";
@@ -224,9 +246,11 @@ function startBrainstorm(e) {
                 words[j].innerHTML = finalCards[item][i].words[j];
             }
             div.className = "card card-" + item;
+            // div.dataset.index = index2;
             var clone = document.importNode(template.content, true);
             cardResult.appendChild(clone);
         }
+        // index2++;
     }
     toggleLayout(e, document.getElementById('dialog-layout'));
     toggleSection();

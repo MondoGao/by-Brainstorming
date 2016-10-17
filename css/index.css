@@ -2,7 +2,14 @@ body, section, header, div, span, ul, li, p, img, figure, h3, a {
   margin: 0;
   border: 0;
   padding: 0;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden; }
+
+a, div {
+  -webkit-tap-highlight-color: transparent; }
+  a:hover, a:focus, div:hover, div:focus {
+    -webkit-tap-highlight-color: transparent; }
 
 html {
   font-size: 37.5px;

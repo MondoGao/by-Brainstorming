@@ -3,6 +3,14 @@ body, section, header, div, span, ul, li, p, img, figure, h3, a {
     border: 0;
     padding: 0;
     box-sizing: border-box;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+a, div {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    &:hover, &:focus {
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
+    }
 }
 
 html {
@@ -194,6 +202,7 @@ $card-color: (
         left: auto;
     }
 }
+
 
 .card-back, .card-list {
     .card {
