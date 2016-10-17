@@ -110,11 +110,19 @@ function fitScreen() {
     var screenHeight = document.body.offsetHeight;
     var screenWidth = document.body.offsetWidth;
     var screenRatio = screenWidth/screenHeight;
+    var paddingRatio = 320/550;
     if (screenRatio < 1 || screenWidth < 375) {
         document.querySelector('html').style.fontSize = screenWidth/10 +'px';
     } else {
         document.querySelector('html').style.fontSize = 37.5 + 'px';
 
+    }
+    if(screenRatio > paddingRatio) {
+        document.querySelectorAll('section')[0].style.paddingBottom =
+        document.querySelectorAll('section')[1].style.paddingBottom = "0.5rem";
+    } else {
+        document.querySelectorAll('section')[0].style.paddingBottom =
+        document.querySelectorAll('section')[1].style.paddingBottom = "0";
     }
 }
 

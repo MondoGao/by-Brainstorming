@@ -39,9 +39,7 @@ section {
     font-size: 0;
     overflow-y: auto;
     white-space: normal;
-    &:first-child {
-
-    }
+    // padding-bottom: 1rem;
 }
 
 h3 {
@@ -85,7 +83,7 @@ a {
 }
 
 #btn-discuss, #btn-again {
-    font-size: 18px;
+    font-size: 0.48rem; /* 18/37.5 */
 }
 
 .card-container {

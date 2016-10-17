@@ -74,7 +74,8 @@ a {
     /* 16/37.5 */ }
 
 #btn-discuss, #btn-again {
-  font-size: 18px; }
+  font-size: 0.48rem;
+  /* 18/37.5 */ }
 
 .card-container {
   position: relative;
