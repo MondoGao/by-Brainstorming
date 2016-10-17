@@ -122,22 +122,6 @@ a {
         right: -0.293rem; /* -11/37.5 */
         border-color: transparent transparent transparent #fff;
     }
-    &.card-front {
-        &::before {
-            left: 0; /* -11/37.5 */
-        }
-        &::after {
-            right: 0; /* -11/37.5 */
-        }
-    }
-}
-
-.card-wrap {
-    margin: 0 auto;
-    width: 5.92rem;
-    height: 7.73rem;
-    transform-style: preserve-3d;
-    perspective: 10rem;
 }
 
 $card-name: (thing, time, place, people, event);
@@ -185,6 +169,32 @@ $card-color: (
     }
 }
 
+@mixin cardPos {
+    &[data-index='0']{
+        transform: translateX(-2.9rem) translateZ(-4.2rem);
+    }
+    &[data-index='1'] {
+        transform: translateX(-1.4rem) translateZ(-2.1rem);
+    }
+    &[data-index='2'] {
+        transform: translateX(0) translateZ(0);
+    }
+    &[data-index='3'] {
+        transform: translateX(1.4rem) translateZ(-2.1rem);
+    }
+    &[data-index='4'] {
+        transform: translateX(2.9rem) translateZ(-4.2rem);
+    }
+}
+
+.card-wrap {
+    margin: 0 auto;
+    width: 5.92rem;
+    height: 7.73rem;
+    transform-style: preserve-3d;
+    perspective: 10rem;
+}
+
 .card {
     background-color: #fff;
     width: 5.92rem;
@@ -206,18 +216,19 @@ $card-color: (
 }
 
 
-.card-back, .card-list {
+.card-back, .card-list, .card-front {
     .card {
         position: absolute;
+        transition: transform .8s;
+        @include cardPos;
+    }
+}
+
+.card-back, .card-list {
+    .card {
         font-size: 1.173rem; /* 44/37.5 */
         background-size: cover !important;
         overflow: hidden;
-        transition: transform .8s;
-        &.animating {
-            position: fixed;
-            transition: all .8s;
-            pointer-events: none;
-        }
         &::before, &::after {
             position: absolute;
             content: "";
@@ -259,21 +270,6 @@ $card-color: (
             position: relative;
             z-index: 1;
         }
-        &[data-index='0']{
-            transform: translateX(-2.9rem) translateZ(-4.2rem);
-        }
-        &[data-index='1'] {
-            transform: translateX(-1.4rem) translateZ(-2.1rem);
-        }
-        &[data-index='2'] {
-            transform: translateX(0) translateZ(0);
-        }
-        &[data-index='3'] {
-            transform: translateX(1.4rem) translateZ(-2.1rem);
-        }
-        &[data-index='4'] {
-            transform: translateX(2.9rem) translateZ(-4.2rem);
-        }
     }
     @for $i from 1 through length($card-name) {
         @include card-color(nth($card-name,$i));
@@ -283,11 +279,14 @@ $card-color: (
 
 .card-front {
     margin-bottom: 1rem;
+    white-space: nowrap;
+    transition: transform .8s;
     .card {
-        margin: 0 auto;
+        // margin: 0 auto;
         img {
             margin: 0.747rem 0 0.16rem; /* 28/37.5 */
             width: 2.453rem; /* 92/37.5 */
+            height: 2.293rem; /* 86/37.5 */
         }
         header {
             font-size: 1.013rem; /* 38/37.5 */
@@ -314,17 +313,7 @@ $card-color: (
     }
 }
 
-#card-result {
-    white-space: nowrap;
-    transition: transform .8s;
-    li {
-        width: 100%;
-        vertical-align: top;
-        img {
-            height: 2.293rem; /* 86/37.5 */
-        }
-    }
-}
+// 卡片选择区
 .card-list {
     margin-left: -0.225rem;
     li {
@@ -357,6 +346,7 @@ $card-color: (
     }
 }
 
+// 悬浮提示层
 #dialog-layout {
     position: absolute;
     top: 3.84rem; /* 144/37.5 */

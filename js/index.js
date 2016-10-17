@@ -1,13 +1,13 @@
 "use strict"
 window.onload = function() {
-    bindBackControllerArea();
+    bindControllerArea('back');
+    bindControllerArea('front');
     bindBackCards();
     bingBackDialog();
-    bindFrontControllerArea();
     document.getElementById('btn-again').addEventListener("click", function(e) {
         e.preventDefault();
         resetBackCards();
-        document.getElementById('card-result').style.transform = "";
+        // document.getElementById('card-result').style.transform = "";
         toggleSection(e);
         // deleteCardResult();
     });
@@ -151,38 +151,6 @@ function fitScreen() {
     }
 }
 
-function bindFrontControllerArea() {
-    var touchstartX;
-    document.querySelector('.card-front .next').addEventListener("click", changeCardFront);
-    document.querySelector('.card-front .previous').addEventListener("click", changeCardFront);
-    document.querySelector('.card-front').addEventListener("touchstart", function(e) {
-        touchstartX = e.touches[0].clientX;
-    });
-    document.querySelector('.card-front').addEventListener("touchend", function(e) {
-        var changedX = e.changedTouches[0].clientX - touchstartX;
-        if(Math.abs(changedX) > 50) {
-            if(changedX > 0)
-                changeCardFront.call(document.querySelector('.card-front .previous'));
-            else
-                changeCardFront.call(document.querySelector('.card-front .next'));
-        }
-    });
-}
-function changeCardFront() {
-    // debugger
-    var direct = this.className == 'controller-area next';
-    var cardResult = document.getElementById('card-result');
-    var deviceWidth = document.body.offsetWidth;
-    if (direct) {
-        cardResult.dataset.card = Number(cardResult.dataset.card) + 1 >= cardResult.querySelectorAll('li').length ? 0 : (Number(cardResult.dataset.card) + 1);
-        cardResult.style.transform = "translateX(-"+ cardResult.dataset.card +"00%)";
-    } else {
-        cardResult.dataset.card = Number(cardResult.dataset.card) - 1 < 0 ? cardResult.querySelectorAll('li').length - 1 : (Number(cardResult.dataset.card) - 1);
-        cardResult.style.transform = "translateX(-"+ cardResult.dataset.card +"00%)";
-    }
-    // console.log(direct);
-}
-
 function bingBackDialog() {
     document.getElementById('btn-start').addEventListener('click', function(e) {
         e.preventDefault();
@@ -237,9 +205,10 @@ function startBrainstorm(e) {
         eng = div.querySelector('small'),
         name = div.querySelector('header span'),
         words = div.querySelectorAll('p span');
-    // var index2 = 0;
+    var k = 0;
+    var order = [2,1,3,0,4];
     for(var item in finalCards) {
-        for(var i = 0; i < finalCards[item].length; i++) {
+        for(var i = 0; i < finalCards[item].length; i++, k++) {
             img.src = "img\/icon\/" + finalCards[item][i].eng + ".svg";
             eng.innerHTML = finalCards[item][i].eng;
             name.innerHTML = finalCards[item][i].name;
@@ -247,20 +216,20 @@ function startBrainstorm(e) {
                 words[j].innerHTML = finalCards[item][i].words[j];
             }
             div.className = "card card-" + item;
-            // div.dataset.index = index2;
+            div.dataset.index = order[k];
             var clone = document.importNode(template.content, true);
             cardResult.appendChild(clone);
         }
-        // index2++;
+
     }
     toggleLayout(e, document.getElementById('dialog-layout'));
     toggleSection();
 }
 function deleteCardResult() {
     var cardResult = document.getElementById('card-result');
-    var lis = cardResult.querySelectorAll('li');
-    for(var i = 0; i < lis.length; i++) {
-        cardResult.removeChild(lis[i]);
+    var cards = cardResult.querySelectorAll('div');
+    for(var i = 0; i < cards.length; i++) {
+        cardResult.removeChild(cards[i]);
     }
 }
 
@@ -314,52 +283,47 @@ function bindBackCards() {
     }
     function deleteCardfromList() {
         this.parentNode.className = "empty";
-        // _this = this;
         setTimeout((function(_this){
             return function() {
                 _this.parentNode.removeChild(_this);
             };
         })(this), 800);
     }
-    // function addToAnimation(ele) {
-    //     ele.style.position = "fixed";
-    //     var li = list.querySelector('.empty');
-    //     ele.style.top = li.getBoundingClientRect().y;
-    //     ele.style.left = li.getBoundingClientRect().x;
-    // }
 }
 
 
-
-
-function bindBackControllerArea() {
+function bindControllerArea(dir) {
     var touchstartX;
-    document.querySelector('.card-back .next').addEventListener("click", changeCardBack);
-    document.querySelector('.card-back .previous').addEventListener("click", changeCardBack);
-    document.querySelector('.card-back').addEventListener("touchstart", function(e) {
+    document.querySelector('.card-' + dir + ' .next').addEventListener("click", function() {
+        changeCard.call(this, dir);
+    });
+    document.querySelector('.card-' + dir + ' .previous').addEventListener("click", function() {
+        changeCard.call(this, dir);
+    });
+    document.querySelector('.card-' + dir).addEventListener("touchstart", function(e) {
         touchstartX = e.touches[0].clientX;
     });
-    document.querySelector('.card-back').addEventListener("touchend", function(e) {
+    document.querySelector('.card-' + dir).addEventListener("touchend", function(e) {
         var changedX = e.changedTouches[0].clientX - touchstartX;
         if(Math.abs(changedX) > 50) {
             if(changedX > 0)
-                changeCardBack.call(document.querySelector('.card-back .next'));
+                changeCard.call(document.querySelector('.card-' + dir + ' .next'), dir);
             else
-                changeCardBack.call(document.querySelector('.card-back .previous'));
+                changeCard.call(document.querySelector('.card-' + dir + ' .previous'), dir);
         }
     });
 }
-function changeCardBack() {
+function changeCard(dir) {
     var direct = this.className == 'controller-area next';
-    var cards = document.querySelectorAll('.card-back .card');
+    var cards = document.querySelectorAll('.card-' + dir + ' .card');
+    var flag = Math.floor((5 - cards.length)/2);
     if (direct) {
         for (var i = 0; i < cards.length; i++) {
-            cards[i].dataset.index = Number(cards[i].dataset.index) + 1 > 4 ? 0 : (Number(cards[i].dataset.index) + 1);
+            cards[i].dataset.index = Number(cards[i].dataset.index) + 1 > (4 - flag) ? flag : (Number(cards[i].dataset.index) + 1);
         }
     } else {
         for (var i = 0; i < cards.length; i++) {
-            cards[i].dataset.index = Number(cards[i].dataset.index) - 1 < 0 ? 4 : (Number(cards[i].dataset.index) - 1);
+            cards[i].dataset.index = Number(cards[i].dataset.index) - 1 < flag ? (4 - flag) : (Number(cards[i].dataset.index) - 1);
         }
     }
-    // console.log(direct);
 }
