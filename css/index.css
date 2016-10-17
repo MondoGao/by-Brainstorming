@@ -131,36 +131,40 @@ a {
     right: 0;
     left: auto; }
 
-.card-back .card {
+.card-back .card, .card-list .card {
   position: absolute;
   font-size: 1.173rem;
   /* 44/37.5 */
   background-size: cover !important;
   overflow: hidden;
   transition: transform .8s; }
-  .card-back .card::before, .card-back .card::after {
+  .card-back .card.animating, .card-list .card.animating {
+    position: fixed;
+    transition: all .8s;
+    pointer-events: none; }
+  .card-back .card::before, .card-back .card::after, .card-list .card::before, .card-list .card::after {
     position: absolute;
     content: "";
     width: 0;
     height: 0;
     border-radius: 50%;
     transform: scaleY(1.1); }
-  .card-back .card::before {
+  .card-back .card::before, .card-list .card::before {
     left: 0.34rem;
     bottom: -2.62rem;
     padding: 1.28rem; }
-  .card-back .card::after {
+  .card-back .card::after, .card-list .card::after {
     left: 1.01rem;
     bottom: -1.95rem;
     padding: 1.28rem; }
-  .card-back .card header {
+  .card-back .card header, .card-list .card header {
     margin: 1rem auto 1.44rem;
     /* 54/37.5 */
     width: 1em;
     line-height: 1.05; }
-  .card-back .card figure {
+  .card-back .card figure, .card-list .card figure {
     font-size: 0; }
-    .card-back .card figure::after {
+    .card-back .card figure::after, .card-list .card figure::after {
       content: "";
       display: block;
       margin: 0.08rem auto 0;
@@ -170,60 +174,60 @@ a {
       /* 50/37.5 */
       background: rgba(0, 0, 0, 0.6);
       border-radius: 50%; }
-  .card-back .card img {
+  .card-back .card img, .card-list .card img {
     height: 2.293rem;
     /* 86/37.5 */
     position: relative;
     z-index: 1; }
-  .card-back .card[data-index='0'] {
+  .card-back .card[data-index='0'], .card-list .card[data-index='0'] {
     transform: translateX(-2.9rem) translateZ(-4.2rem); }
-  .card-back .card[data-index='1'] {
+  .card-back .card[data-index='1'], .card-list .card[data-index='1'] {
     transform: translateX(-1.4rem) translateZ(-2.1rem); }
-  .card-back .card[data-index='2'] {
+  .card-back .card[data-index='2'], .card-list .card[data-index='2'] {
     transform: translateX(0) translateZ(0); }
-  .card-back .card[data-index='3'] {
+  .card-back .card[data-index='3'], .card-list .card[data-index='3'] {
     transform: translateX(1.4rem) translateZ(-2.1rem); }
-  .card-back .card[data-index='4'] {
+  .card-back .card[data-index='4'], .card-list .card[data-index='4'] {
     transform: translateX(2.9rem) translateZ(-4.2rem); }
-.card-back .card-thing {
+.card-back .card-thing, .card-list .card-thing {
   box-shadow: 0 0.027rem 0.133rem 0rem #E5C04E, 0 0.053rem 0.053rem 0rem #E5C04E;
   /* 1/37.5, 5/37.5, 0/37.5, 2/37.5, 2/37.5, 0/37.5 */
   background: #FAEAB6 url(../img/card/thing.jpg); }
-  .card-back .card-thing::before {
+  .card-back .card-thing::before, .card-list .card-thing::before {
     border: 1.34rem solid #F4D578; }
-  .card-back .card-thing::after {
+  .card-back .card-thing::after, .card-list .card-thing::after {
     border: 0.67rem solid #E5C04E; }
-.card-back .card-time {
+.card-back .card-time, .card-list .card-time {
   box-shadow: 0 0.027rem 0.133rem 0rem #5581AE, 0 0.053rem 0.053rem 0rem #5581AE;
   /* 1/37.5, 5/37.5, 0/37.5, 2/37.5, 2/37.5, 0/37.5 */
   background: #D4E9FE url(../img/card/time.jpg); }
-  .card-back .card-time::before {
+  .card-back .card-time::before, .card-list .card-time::before {
     border: 1.34rem solid #719DCA; }
-  .card-back .card-time::after {
+  .card-back .card-time::after, .card-list .card-time::after {
     border: 0.67rem solid #5581AE; }
-.card-back .card-place {
+.card-back .card-place, .card-list .card-place {
   box-shadow: 0 0.027rem 0.133rem 0rem #C97AAA, 0 0.053rem 0.053rem 0rem #C97AAA;
   /* 1/37.5, 5/37.5, 0/37.5, 2/37.5, 2/37.5, 0/37.5 */
   background: #F0C2DE url(../img/card/place.jpg); }
-  .card-back .card-place::before {
+  .card-back .card-place::before, .card-list .card-place::before {
     border: 1.34rem solid #D799BE; }
-  .card-back .card-place::after {
+  .card-back .card-place::after, .card-list .card-place::after {
     border: 0.67rem solid #C97AAA; }
-.card-back .card-people {
+.card-back .card-people, .card-list .card-people {
   box-shadow: 0 0.027rem 0.133rem 0rem #9876B3, 0 0.053rem 0.053rem 0rem #9876B3;
   /* 1/37.5, 5/37.5, 0/37.5, 2/37.5, 2/37.5, 0/37.5 */
   background: #DECEEB url(../img/card/people.jpg); }
-  .card-back .card-people::before {
+  .card-back .card-people::before, .card-list .card-people::before {
     border: 1.34rem solid #BDA1D4; }
-  .card-back .card-people::after {
+  .card-back .card-people::after, .card-list .card-people::after {
     border: 0.67rem solid #9876B3; }
-.card-back .card-event {
+.card-back .card-event, .card-list .card-event {
   box-shadow: 0 0.027rem 0.133rem 0rem #40C1AD, 0 0.053rem 0.053rem 0rem #40C1AD;
   /* 1/37.5, 5/37.5, 0/37.5, 2/37.5, 2/37.5, 0/37.5 */
   background: #C3EEE7 url(../img/card/event.jpg); }
-  .card-back .card-event::before {
+  .card-back .card-event::before, .card-list .card-event::before {
     border: 1.34rem solid #98E1D6; }
-  .card-back .card-event::after {
+  .card-back .card-event::after, .card-list .card-event::after {
     border: 0.67rem solid #40C1AD; }
 
 .card-front {
@@ -287,97 +291,22 @@ a {
     background-color: #fff;
     border: 1px solid #8D99A7;
     border-radius: 0.32rem;
-    overflow: hidden; }
-    .card-list li {
-      margin-left: 0.225rem; }
+    overflow: hidden;
+    margin-left: 0.225rem; }
     .card-list li .card {
-      position: absolute;
-      font-size: 1.173rem;
-      /* 44/37.5 */
-      overflow: hidden;
+      transition: opacity .8s, transform .8s;
+      opacity: 1;
+      pointer-events: auto; }
+    .card-list li.empty .card {
+      opacity: 0;
+      pointer-events: none; }
+    .card-list li .card {
+      border-radius: 1.5rem;
       top: -2.693rem;
       /* -101/37.5 */
       left: -2.133rem;
       /* -80/37.5 */
-      transform: scale(0.31);
-      transition: transform .8s; }
-      .card-list li .card::before, .card-list li .card::after {
-        position: absolute;
-        content: "";
-        width: 0;
-        height: 0;
-        border-radius: 50%;
-        transform: scaleY(1.1); }
-      .card-list li .card::before {
-        left: 0.34rem;
-        bottom: -2.62rem;
-        padding: 1.28rem; }
-      .card-list li .card::after {
-        left: 1.01rem;
-        bottom: -1.95rem;
-        padding: 1.28rem; }
-      .card-list li .card header {
-        margin: 1rem auto 1.44rem;
-        /* 54/37.5 */
-        width: 1em;
-        line-height: 1.05; }
-      .card-list li .card figure {
-        font-size: 0; }
-        .card-list li .card figure::after {
-          content: "";
-          display: block;
-          margin: 0.08rem auto 0;
-          height: 0.187rem;
-          /* 7/37.5 */
-          width: 1.333rem;
-          /* 50/37.5 */
-          background: rgba(0, 0, 0, 0.6);
-          border-radius: 50%; }
-      .card-list li .card img {
-        height: 2.293rem;
-        /* 86/37.5 */
-        position: relative;
-        z-index: 1; }
-    .card-list li .card-thing {
-      box-shadow: 0 0.027rem 0.133rem 0rem #E5C04E, 0 0.053rem 0.053rem 0rem #E5C04E;
-      /* 1/37.5, 5/37.5, 0/37.5, 2/37.5, 2/37.5, 0/37.5 */
-      background: #FAEAB6 url(../img/card/thing.jpg); }
-      .card-list li .card-thing::before {
-        border: 1.34rem solid #F4D578; }
-      .card-list li .card-thing::after {
-        border: 0.67rem solid #E5C04E; }
-    .card-list li .card-time {
-      box-shadow: 0 0.027rem 0.133rem 0rem #5581AE, 0 0.053rem 0.053rem 0rem #5581AE;
-      /* 1/37.5, 5/37.5, 0/37.5, 2/37.5, 2/37.5, 0/37.5 */
-      background: #D4E9FE url(../img/card/time.jpg); }
-      .card-list li .card-time::before {
-        border: 1.34rem solid #719DCA; }
-      .card-list li .card-time::after {
-        border: 0.67rem solid #5581AE; }
-    .card-list li .card-place {
-      box-shadow: 0 0.027rem 0.133rem 0rem #C97AAA, 0 0.053rem 0.053rem 0rem #C97AAA;
-      /* 1/37.5, 5/37.5, 0/37.5, 2/37.5, 2/37.5, 0/37.5 */
-      background: #F0C2DE url(../img/card/place.jpg); }
-      .card-list li .card-place::before {
-        border: 1.34rem solid #D799BE; }
-      .card-list li .card-place::after {
-        border: 0.67rem solid #C97AAA; }
-    .card-list li .card-people {
-      box-shadow: 0 0.027rem 0.133rem 0rem #9876B3, 0 0.053rem 0.053rem 0rem #9876B3;
-      /* 1/37.5, 5/37.5, 0/37.5, 2/37.5, 2/37.5, 0/37.5 */
-      background: #DECEEB url(../img/card/people.jpg); }
-      .card-list li .card-people::before {
-        border: 1.34rem solid #BDA1D4; }
-      .card-list li .card-people::after {
-        border: 0.67rem solid #9876B3; }
-    .card-list li .card-event {
-      box-shadow: 0 0.027rem 0.133rem 0rem #40C1AD, 0 0.053rem 0.053rem 0rem #40C1AD;
-      /* 1/37.5, 5/37.5, 0/37.5, 2/37.5, 2/37.5, 0/37.5 */
-      background: #C3EEE7 url(../img/card/event.jpg); }
-      .card-list li .card-event::before {
-        border: 1.34rem solid #98E1D6; }
-      .card-list li .card-event::after {
-        border: 0.67rem solid #40C1AD; }
+      transform: scale(0.31); }
 
 #dialog-layout {
   position: absolute;
@@ -419,10 +348,50 @@ a {
     margin-left: 0.24rem;
     /* 9/37.5 */ }
 
+#share-layout {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  bottom: 0;
+  left: 100%;
+  z-index: 5;
+  opacity: 1;
+  transition: opacity .5s;
+  pointer-events: none; }
+  #share-layout.hide {
+    opacity: 0; }
+  #share-layout::before {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle; }
+  #share-layout img:first-of-type {
+    vertical-align: middle;
+    width: 3.333rem;
+    /* 125/37.5 */
+    height: 5.04rem;
+    /* 189/37.5 */ }
+  #share-layout img:last-of-type {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 2.347rem;
+    /* 88/37.5 */
+    height: 4.267rem;
+    /* 160/37.5 */ }
+  #share-layout p {
+    position: absolute;
+    top: 50%;
+    margin-top: 3rem;
+    width: 100%;
+    color: #fff;
+    font-size: 0.64rem;
+    /* 24/37.5 */ }
+
 #black-layout {
   position: fixed;
   top: 0;
-  right: 0;
+  right: -100%;
   bottom: 0;
   left: 0;
   background: rgba(0, 0, 0, 0.35);

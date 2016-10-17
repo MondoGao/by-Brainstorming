@@ -193,13 +193,18 @@ $card-color: (
     }
 }
 
-.card-back {
+.card-back, .card-list {
     .card {
         position: absolute;
         font-size: 1.173rem; /* 44/37.5 */
         background-size: cover !important;
         overflow: hidden;
         transition: transform .8s;
+        &.animating {
+            position: fixed;
+            transition: all .8s;
+            pointer-events: none;
+        }
         &::before, &::after {
             position: absolute;
             content: "";
@@ -316,61 +321,24 @@ $card-color: (
         border: 1px solid #8D99A7;
         border-radius: 0.32rem;
         overflow: hidden;
-        & {
-            margin-left: 0.225rem;
+        margin-left: 0.225rem;
+        .card {
+            transition: opacity .8s, transform .8s;
+            opacity: 1;
+            pointer-events: auto;
+        }
+        &.empty {
+            .card {
+                opacity: 0;
+                pointer-events: none;
+                // transition:
+            }
         }
         .card {
-            position: absolute;
-            font-size: 1.173rem; /* 44/37.5 */
-            overflow: hidden;
-            // transform-origin: top left;
+            border-radius: 1.5rem;
             top: -2.693rem; /* -101/37.5 */
             left: -2.133rem; /* -80/37.5 */
             transform: scale(0.31);
-            transition: transform .8s;
-            &::before, &::after {
-                position: absolute;
-                content: "";
-                width: 0;
-                height: 0;
-                border-radius: 50%;
-                transform: scaleY(1.1);
-            }
-            &::before {
-                left: 0.34rem;
-                bottom: -2.62rem;
-                padding: 1.28rem;
-            }
-            &::after {
-                left: 1.01rem;
-                bottom: -1.95rem;
-                padding: 1.28rem;
-            }
-            header {
-                margin: 1rem auto 1.44rem; /* 54/37.5 */
-                width: 1em;
-                line-height: 1.05;
-            }
-            figure {
-                font-size: 0;
-                &::after{
-                    content: "";
-                    display: block;
-                    margin: 0.08rem auto 0;
-                    height: 0.187rem; /* 7/37.5 */
-                    width: 1.333rem; /* 50/37.5 */
-                    background: rgba(0,0,0,.6);
-                    border-radius: 50%;
-                }
-            }
-            img {
-                height: 2.293rem; /* 86/37.5 */
-                position: relative;
-                z-index: 1;
-            }
-        }
-        @for $i from 1 through length($card-name) {
-            @include card-color(nth($card-name,$i));
         }
     }
 }
@@ -409,10 +377,52 @@ $card-color: (
     }
 }
 
+#share-layout {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    bottom: 0;
+    left: 100%;
+    z-index: 5;
+    opacity: 1;
+    transition: opacity .5s;
+    // pointer-events: auto;
+    pointer-events: none;
+    &.hide {
+        opacity: 0;
+    }
+    &::before {
+        content: "";
+        display: inline-block;
+        height: 100%;
+        vertical-align: middle;
+    }
+    img:first-of-type {
+        vertical-align: middle;
+        width: 3.333rem; /* 125/37.5 */
+        height: 5.04rem; /* 189/37.5 */
+    }
+    img:last-of-type {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        width: 2.347rem; /* 88/37.5 */
+        height: 4.267rem; /* 160/37.5 */
+    }
+    p {
+        position: absolute;
+        top: 50%;
+        margin-top: 3rem;
+        width: 100%;
+        color: #fff;
+        font-size: 0.64rem; /* 24/37.5 */
+    }
+}
+
 #black-layout {
     position: fixed;
     top: 0;
-    right: 0;
+    right: -100%;
     bottom: 0;
     left: 0;
     background: rgba(0,0,0,.35);

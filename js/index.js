@@ -1,11 +1,25 @@
+"use strict"
 window.onload = function() {
     bindBackControllerArea();
     bindBackCards();
     bingBackDialog();
     bindFrontControllerArea();
-    document.getElementById('btn-again').addEventListener("click", toggleSection);
+    document.getElementById('btn-again').addEventListener("click", function(e) {
+        e.preventDefault();
+        resetBackCards();
+        toggleSection(e);
+        // deleteCardResult();
+    });
     fitScreen();
     window.onresize = fitScreen;
+    document.getElementById('btn-discuss').addEventListener("click", function(e) {
+        toggleLayout(e, document.getElementById('share-layout'));
+    });
+    document.getElementById('black-layout').addEventListener('click', function() {
+        document.getElementById('share-layout').className =
+        document.getElementById('dialog-layout').className =
+        document.getElementById('black-layout').className = "hide";
+    });
 };
 
 var cardData = {
@@ -82,6 +96,16 @@ var cardData = {
     ]
 };
 
+function resetBackCards() {
+    var cardList = document.querySelector('.card-list');
+    var cardLis = cardList.querySelectorAll('li:not(.empty)');
+    var i;
+    for (i = 0; i < cardLis.length; i++) {
+        cardLis[i].className = 'empty';
+        cardLis[i].removeChild(cardLis[i].querySelector('div'));
+    }
+}
+
 function fitScreen() {
     var screenHeight = document.body.offsetHeight;
     var screenWidth = document.body.offsetWidth;
@@ -127,8 +151,18 @@ function changeCardFront() {
 }
 
 function bingBackDialog() {
-    document.getElementById('btn-start').addEventListener('click', toggleDialog);
-    document.getElementById('dialog-cancel').addEventListener('click', toggleDialog);
+    document.getElementById('btn-start').addEventListener('click', function(e) {
+        e.preventDefault();
+        var lis = document.querySelector('.card-list').querySelectorAll('.card');
+        if(lis.length < 1) {
+            alert('至少选择一张卡片哦～');
+            return;
+        }
+        toggleLayout(e, document.getElementById('dialog-layout'));
+    });
+    document.getElementById('dialog-cancel').addEventListener('click', function(e) {
+        toggleLayout(e, document.getElementById('dialog-layout'));
+    });
     document.getElementById('dialog-submit').addEventListener('click', startBrainstorm);
 }
 
@@ -148,8 +182,8 @@ function startBrainstorm(e) {
         type.push(name);
         typeNumber[name]++;
         if(typeNumber[name] > cardData[name].length) {
-            alert("没那么多同类别的词哦～请重试！")
-            toggleDialog();
+            alert("没那么多同类别的词哦～请重试！");
+            toggleLayout(e, document.getElementById('dialog-layout'));
             return;
         }
     }
@@ -183,7 +217,7 @@ function startBrainstorm(e) {
             cardResult.appendChild(clone);
         }
     }
-    toggleDialog();
+    toggleLayout(e, document.getElementById('dialog-layout'));
     toggleSection();
 }
 function deleteCardResult() {
@@ -194,15 +228,15 @@ function deleteCardResult() {
     }
 }
 
-function toggleDialog(e) {
+function toggleLayout(e, ele) {
     if(e) {
         e.preventDefault();
     }
-    if (document.getElementById('dialog-layout').className !== "") {
-        document.getElementById('dialog-layout').className = "";
+    if (ele.className !== "") {
+        ele.className = "";
         document.getElementById('black-layout').className = "";
     } else {
-        document.getElementById('dialog-layout').className = "hide";
+        ele.className = "hide";
         document.getElementById('black-layout').className = "hide";
     }
 }
@@ -227,17 +261,32 @@ function bindBackCards() {
     }
     function addToCardList() {
         var clone = this.cloneNode(true);
+        clone.dataset.index = "";
         clone.addEventListener("click", deleteCardfromList);
         var li = list.querySelector('.empty');
         if(li) {
             li.appendChild(clone);
-            li.className = "";
+            // if(addToAnimation(clone)) ;
+            setTimeout(function() {
+                li.className = "";
+            }, 20);
         }
     }
     function deleteCardfromList() {
         this.parentNode.className = "empty";
-        this.parentNode.removeChild(this);
+        // _this = this;
+        setTimeout((function(_this){
+            return function() {
+                _this.parentNode.removeChild(_this);
+            };
+        })(this), 800);
     }
+    // function addToAnimation(ele) {
+    //     ele.style.position = "fixed";
+    //     var li = list.querySelector('.empty');
+    //     ele.style.top = li.getBoundingClientRect().y;
+    //     ele.style.left = li.getBoundingClientRect().x;
+    // }
 }
 
 
