@@ -23,6 +23,8 @@ body {
   font-size: 0;
   overflow: hidden;
   white-space: nowrap;
+  transform-style: preserve-3d;
+  perspective: 10rem;
   background-color: #A4CCF0; }
 
 ul {
