@@ -13,6 +13,7 @@ html {
 body {
   height: 100%;
   width: 100%;
+  font-size: 0;
   overflow: hidden;
   white-space: nowrap;
   background-color: #A4CCF0; }
@@ -325,7 +326,8 @@ a {
   background-color: #fff;
   border-radius: 0.373rem;
   /* 14/37.5 */
-  z-index: 5;
+  text-align: center;
+  white-space: normal;
   transition: opacity .8s; }
   #dialog-layout.hide {
     opacity: 0;
@@ -358,10 +360,9 @@ a {
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 5;
   opacity: 1;
+  text-align: center;
   transition: opacity .5s;
-  background: rgba(0, 0, 0, 0.35);
   pointer-events: auto; }
   #share-layout.hide {
     opacity: 0;
@@ -397,13 +398,12 @@ a {
 #black-layout {
   position: fixed;
   top: 0;
-  right: -100%;
+  right: 0;
   bottom: 0;
   left: 0;
   background: rgba(0, 0, 0, 0.35);
   opacity: 1;
   pointer-events: auto;
-  z-index: 2;
   transition: opacity .8s; }
   #black-layout.hide {
     opacity: 0;

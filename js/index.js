@@ -113,7 +113,7 @@ function fitScreen() {
     var screenHeight = document.body.offsetHeight;
     var screenWidth = document.body.offsetWidth;
     var screenRatio = screenWidth/screenHeight;
-    var paddingRatio = 320/540;
+    var paddingRatio = 320/530;
     if (screenRatio < 1 || screenWidth < 375) {
         document.querySelector('html').style.fontSize = screenWidth/10 +'px';
     } else {
@@ -122,7 +122,7 @@ function fitScreen() {
     }
     if(screenRatio > paddingRatio) {
         document.querySelectorAll('section')[0].style.paddingBottom =
-        document.querySelectorAll('section')[1].style.paddingBottom = "0.5rem";
+        document.querySelectorAll('section')[1].style.paddingBottom = "0.2rem";
     } else {
         document.querySelectorAll('section')[0].style.paddingBottom =
         document.querySelectorAll('section')[1].style.paddingBottom = "0";
@@ -260,7 +260,7 @@ function toggleSection(e) {
     if (document.body.dataset.index === "0") {
         document.body.dataset.index = 1;
         sec[0].style.transform = "translateX(-100%)";
-        sec[1].style.transform = "translateX(-102%)";
+        sec[1].style.transform = "translateX(-100%)";
     } else {
         document.body.dataset.index = 0;
         sec[0].style.transform = "translateX(0)";
