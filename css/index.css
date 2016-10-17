@@ -12,10 +12,11 @@ html {
 
 body {
   height: 100%;
+  width: 100%;
+  font-size: 0;
+  overflow: hidden;
   white-space: nowrap;
-  background-color: #A4CCF0;
-  transform: translateX(0);
-  transition: transform .8s; }
+  background-color: #A4CCF0; }
 
 ul {
   list-style: none;
@@ -33,7 +34,10 @@ section {
   text-align: center;
   font-size: 0;
   overflow-y: auto;
-  white-space: normal; }
+  overflow-x: hidden;
+  white-space: normal;
+  transform: translateX(0);
+  transition: transform .8s; }
 
 h3 {
   font-weight: normal;
@@ -322,7 +326,8 @@ a {
   background-color: #fff;
   border-radius: 0.373rem;
   /* 14/37.5 */
-  z-index: 4;
+  text-align: center;
+  white-space: normal;
   transition: opacity .8s; }
   #dialog-layout.hide {
     opacity: 0;
@@ -352,15 +357,16 @@ a {
 #share-layout {
   position: fixed;
   top: 0;
-  right: -100%;
+  right: 0;
   bottom: 0;
-  left: 100%;
-  z-index: 5;
+  left: 0;
   opacity: 1;
+  text-align: center;
   transition: opacity .5s;
-  pointer-events: none; }
+  pointer-events: auto; }
   #share-layout.hide {
-    opacity: 0; }
+    opacity: 0;
+    pointer-events: none; }
   #share-layout::before {
     content: "";
     display: inline-block;
@@ -392,7 +398,7 @@ a {
 #black-layout {
   position: fixed;
   top: 0;
-  right: -100%;
+  right: 0;
   bottom: 0;
   left: 0;
   background: rgba(0, 0, 0, 0.35);
