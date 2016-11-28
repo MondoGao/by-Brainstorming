@@ -30,7 +30,7 @@ function preventDefault(ev) {
     ev.preventDefault()
 }
 function stopPropagation(ev) {
-    // debugger;
+
     ev.stopPropagation()
 }
 
