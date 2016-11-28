@@ -1,12 +1,13 @@
 "use strict"
 window.onload = function() {
-    bindBackControllerArea();
+    bindControllerArea('back');
+    bindControllerArea('front');
     bindBackCards();
     bingBackDialog();
-    bindFrontControllerArea();
     document.getElementById('btn-again').addEventListener("click", function(e) {
         e.preventDefault();
         resetBackCards();
+        // document.getElementById('card-result').style.transform = "";
         toggleSection(e);
         // deleteCardResult();
     });
@@ -15,12 +16,23 @@ window.onload = function() {
     document.getElementById('btn-discuss').addEventListener("click", function(e) {
         toggleLayout(e, document.getElementById('share-layout'));
     });
+    document.getElementById('share-layout').addEventListener('click', function(e) {
+        toggleLayout(e, document.getElementById('share-layout'));
+    });
     document.getElementById('black-layout').addEventListener('click', function() {
         document.getElementById('share-layout').className =
         document.getElementById('dialog-layout').className =
         document.getElementById('black-layout').className = "hide";
     });
 };
+
+function preventDefault(ev) {
+    ev.preventDefault()
+}
+function stopPropagation(ev) {
+    // debugger;
+    ev.stopPropagation()
+}
 
 var cardData = {
     time: [
@@ -110,44 +122,34 @@ function fitScreen() {
     var screenHeight = document.body.offsetHeight;
     var screenWidth = document.body.offsetWidth;
     var screenRatio = screenWidth/screenHeight;
+    var paddingRatio = 375/600;
     if (screenRatio < 1 || screenWidth < 375) {
         document.querySelector('html').style.fontSize = screenWidth/10 +'px';
     } else {
         document.querySelector('html').style.fontSize = 37.5 + 'px';
-
     }
-}
-
-function bindFrontControllerArea() {
-    var touchstartX;
-    document.querySelector('.card-front .next').addEventListener("click", changeCardFront);
-    document.querySelector('.card-front .previous').addEventListener("click", changeCardFront);
-    document.querySelector('.card-front').addEventListener("touchstart", function(e) {
-        touchstartX = e.touches[0].clientX;
-    });
-    document.querySelector('.card-front').addEventListener("touchend", function(e) {
-        var changedX = e.changedTouches[0].clientX - touchstartX;
-        if(Math.abs(changedX) > 50) {
-            if(changedX > 0)
-                changeCardFront.call(document.querySelector('.card-front .previous'));
-            else
-                changeCardFront.call(document.querySelector('.card-front .next'));
-        }
-    });
-}
-function changeCardFront() {
     // debugger
-    var direct = this.className == 'controller-area next';
-    var cardResult = document.getElementById('card-result');
-    var deviceWidth = document.body.offsetWidth;
-    if (direct) {
-        cardResult.dataset.card = Number(cardResult.dataset.card) + 1 >= cardResult.querySelectorAll('li').length ? 0 : (Number(cardResult.dataset.card) + 1);
-        cardResult.style.transform = "translateX(-"+ cardResult.dataset.card +"00%)";
-    } else {
-        cardResult.dataset.card = Number(cardResult.dataset.card) - 1 < 0 ? cardResult.querySelectorAll('li').length - 1 : (Number(cardResult.dataset.card) - 1);
-        cardResult.style.transform = "translateX(-"+ cardResult.dataset.card +"00%)";
+    document.body.addEventListener('touchmove', preventDefault);
+    var secHeight1 = document.querySelectorAll("section")[0];
+    var secHeight2 = document.querySelectorAll("section")[1];
+    changeSecScroll(secHeight1);
+    changeSecScroll(secHeight2);
+
+    function changeSecScroll(sec) {
+        if(sec.scrollHeight > screenHeight) {
+            sec.addEventListener('touchmove', stopPropagation);
+        } else {
+            sec.removeEventListener('touchmove', stopPropagation);
+        }
     }
-    // console.log(direct);
+
+    if(screenRatio > paddingRatio) {
+        document.querySelectorAll('section')[0].style.paddingBottom =
+        document.querySelectorAll('section')[1].style.paddingBottom = "0.2rem";
+    } else {
+        document.querySelectorAll('section')[0].style.paddingBottom =
+        document.querySelectorAll('section')[1].style.paddingBottom = "0";
+    }
 }
 
 function bingBackDialog() {
@@ -204,27 +206,31 @@ function startBrainstorm(e) {
         eng = div.querySelector('small'),
         name = div.querySelector('header span'),
         words = div.querySelectorAll('p span');
+    var k = 0;
+    var order = [2,1,3,0,4];
     for(var item in finalCards) {
-        for(var i = 0; i < finalCards[item].length; i++) {
+        for(var i = 0; i < finalCards[item].length; i++, k++) {
             img.src = "img\/icon\/" + finalCards[item][i].eng + ".svg";
             eng.innerHTML = finalCards[item][i].eng;
             name.innerHTML = finalCards[item][i].name;
-            for(var j = 0; j < finalCards[item][i].words.length; j++) {
-                words[j].innerHTML = finalCards[item][i].words[j];
+            for(var j = 0; j < 6; j++) {
+                words[j].innerHTML = finalCards[item][i].words[j] || "";
             }
             div.className = "card card-" + item;
+            div.dataset.index = order[k];
             var clone = document.importNode(template.content, true);
             cardResult.appendChild(clone);
         }
+
     }
     toggleLayout(e, document.getElementById('dialog-layout'));
     toggleSection();
 }
 function deleteCardResult() {
     var cardResult = document.getElementById('card-result');
-    var lis = cardResult.querySelectorAll('li');
-    for(var i = 0; i < lis.length; i++) {
-        cardResult.removeChild(lis[i]);
+    var cards = cardResult.querySelectorAll('div');
+    for(var i = 0; i < cards.length; i++) {
+        cardResult.removeChild(cards[i]);
     }
 }
 
@@ -244,12 +250,16 @@ function toggleSection(e) {
     if(e) {
         e.preventDefault();
     }
+    var sec = document.querySelectorAll('section');
+
     if (document.body.dataset.index === "0") {
         document.body.dataset.index = 1;
-        document.body.style.transform = "translateX(-100%)";
+        sec[0].style.transform = "translateX(-100%)";
+        sec[1].style.transform = "translateX(-100%)";
     } else {
         document.body.dataset.index = 0;
-        document.body.style.transform = "translateX(0)";
+        sec[0].style.transform = "translateX(0)";
+        sec[1].style.transform = "translateX(0)";
     }
 }
 
@@ -274,52 +284,63 @@ function bindBackCards() {
     }
     function deleteCardfromList() {
         this.parentNode.className = "empty";
-        // _this = this;
         setTimeout((function(_this){
             return function() {
                 _this.parentNode.removeChild(_this);
             };
         })(this), 800);
     }
-    // function addToAnimation(ele) {
-    //     ele.style.position = "fixed";
-    //     var li = list.querySelector('.empty');
-    //     ele.style.top = li.getBoundingClientRect().y;
-    //     ele.style.left = li.getBoundingClientRect().x;
-    // }
 }
 
 
-
-
-function bindBackControllerArea() {
+function bindControllerArea(dir) {
     var touchstartX;
-    document.querySelector('.card-back .next').addEventListener("click", changeCardBack);
-    document.querySelector('.card-back .previous').addEventListener("click", changeCardBack);
-    document.querySelector('.card-back').addEventListener("touchstart", function(e) {
+    document.querySelector('.card-' + dir + ' .next').addEventListener("click", function() {
+        changeCard.call(document.querySelector('.card-' + dir + ' .previous'), dir);
+    });
+    document.querySelector('.card-' + dir + ' .previous').addEventListener("click", function() {
+        changeCard.call(document.querySelector('.card-' + dir + ' .next'), dir);
+    });
+    document.querySelector('.card-' + dir).addEventListener("touchstart", function(e) {
         touchstartX = e.touches[0].clientX;
     });
-    document.querySelector('.card-back').addEventListener("touchend", function(e) {
+    document.querySelector('.card-' + dir).addEventListener("touchend", function(e) {
         var changedX = e.changedTouches[0].clientX - touchstartX;
         if(Math.abs(changedX) > 50) {
             if(changedX > 0)
-                changeCardBack.call(document.querySelector('.card-back .next'));
+                changeCard.call(document.querySelector('.card-' + dir + ' .next'), dir);
             else
-                changeCardBack.call(document.querySelector('.card-back .previous'));
+                changeCard.call(document.querySelector('.card-' + dir + ' .previous'), dir);
         }
     });
 }
-function changeCardBack() {
+function changeCard(dir) {
     var direct = this.className == 'controller-area next';
-    var cards = document.querySelectorAll('.card-back .card');
+    var cards = document.querySelectorAll('.card-' + dir + ' .card');
+    var flag = Math.floor((5 - cards.length)/2);
     if (direct) {
         for (var i = 0; i < cards.length; i++) {
-            cards[i].dataset.index = Number(cards[i].dataset.index) + 1 > 4 ? 0 : (Number(cards[i].dataset.index) + 1);
+            var outFlag = Number(cards[i].dataset.index) + 1 > (4 - flag);
+            if (cards.length%2 === 0 && outFlag) {
+                setTimeout((function(i) {
+                    return function() {
+                        cards[i].dataset.index = Number(cards[i].dataset.index) + 1;
+                    }
+                })(i),300);
+            }
+            cards[i].dataset.index = Number(cards[i].dataset.index) + 1 > (4 - flag) ? flag : (Number(cards[i].dataset.index) + 1);
         }
     } else {
         for (var i = 0; i < cards.length; i++) {
-            cards[i].dataset.index = Number(cards[i].dataset.index) - 1 < 0 ? 4 : (Number(cards[i].dataset.index) - 1);
+            var outFlag = Number(cards[i].dataset.index) - 1 < flag;
+            if (cards.length%2 === 0 && outFlag) {
+                setTimeout((function(i) {
+                    return function() {
+                        cards[i].dataset.index = Number(cards[i].dataset.index) - 1;
+                    }
+                })(i),300);
+            }
+            cards[i].dataset.index = Number(cards[i].dataset.index) - 1 < flag ? (4 - flag) : (Number(cards[i].dataset.index) - 1);
         }
     }
-    // console.log(direct);
 }
